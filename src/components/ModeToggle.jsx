@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 
 const modes = [
-  { id: 'slorn', label: 'ស្លន់ Slorn' },
-  { id: 'pheii', label: 'ភ័យ Pheii' },
+  { id: 'slorn', label: 'Slorn mode' },
+  { id: 'pheii', label: 'buk pous mode' },
 ];
 
 export default function ModeToggle({ value, onChange }) {
@@ -26,3 +26,4 @@ export default function ModeToggle({ value, onChange }) {
     </div>
   );
 }
+
