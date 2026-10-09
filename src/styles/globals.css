@@ -1,0 +1,82 @@
+/* GLOBALS: design tokens, resets, typography, and page layout */
+:root {
+  color-scheme: dark;
+  --bg: #0f172a;
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-strong: rgba(15, 23, 42, 0.88);
+  --border: rgba(255, 255, 255, 0.1);
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --purple: #a855f7;
+  --pink: #ec4899;
+  --blue: #3b82f6;
+  --accent: linear-gradient(135deg, #a855f7, #ec4899);
+  --grade-A: #a855f7;
+  --grade-B: #3b82f6;
+  --grade-C: #22c55e;
+  --grade-D: #eab308;
+  --grade-E: #f97316;
+  --grade-F: #ef4444;
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --radius: 1.5rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { min-width: 320px; -webkit-text-size-adjust: 100%; }
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, "Noto Sans Khmer", system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+button, input { color: inherit; font: inherit; }
+button { border: 0; cursor: pointer; }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; }
+.grad-text { background: var(--accent); background-clip: text; color: transparent; }
+
+/* Main page frame */
+.app {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 620px);
+  margin: 0 auto;
+  padding: calc(1.75rem + env(safe-area-inset-top)) var(--space-3) 14rem;
+}
+.header { display: flex; align-items: center; gap: var(--space-3); margin-bottom: 1.35rem; }
+.flag, .flag-image {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 3rem;
+  place-items: center;
+  border: 1px solid rgba(236, 72, 153, .4);
+  border-radius: 1rem;
+}
+.flag {
+  background: var(--accent);
+  font-size: .9rem;
+  font-weight: 900;
+  letter-spacing: .04em;
+}
+.flag-upload { position: relative; flex: 0 0 3rem; width: 3rem; height: 3rem; padding: 0; border-radius: 1rem; background: transparent; }
+.flag-image { object-fit: cover; }
+.upload-indicator { position: absolute; right: -.2rem; bottom: -.2rem; display: grid; width: 1.35rem; height: 1.35rem; place-items: center; border: 1px solid var(--bg); border-radius: 50%; background: var(--pink); color: white; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; clip-path: inset(50%); }
+.header-image-error { margin: -.8rem 0 1rem; color: #fda4af; font-size: .78rem; }
+.title { margin: 0; font-size: clamp(1.4rem, 6vw, 1.9rem); font-weight: 900; letter-spacing: -.045em; }
+.subtitle { margin: .2rem 0 0; color: var(--muted); font-size: .82rem; }
+.header-icon { margin-left: auto; color: var(--purple); }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); }
+.note { display: flex; flex-direction: column; gap: .2rem; margin: 1rem 0 1.5rem; color: var(--muted); text-align: center; font-size: .79rem; }
+.note [lang="km"], .khmer-copy, [lang="km"] { font-family: "Noto Sans Khmer", Inter, sans-serif; }
+
+@media (min-width: 640px) {
+  .app { padding-top: 3rem; }
+  .grid { gap: var(--space-3); }
+}

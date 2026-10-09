@@ -1,0 +1,23 @@
+/* ANIMATIONS: ambient background motion and reduced-motion support */
+.blobs { position: fixed; z-index: 0; inset: 0; overflow: hidden; pointer-events: none; }
+.blob { position: absolute; border-radius: 50%; filter: blur(86px); opacity: .36; will-change: transform; }
+.b1 { top: -8rem; left: -8rem; width: 24rem; height: 24rem; background: var(--purple); animation: drift-purple 19s ease-in-out infinite; }
+.b2 { right: -8rem; bottom: 4%; width: 23rem; height: 23rem; background: var(--pink); animation: drift-pink 23s ease-in-out infinite; }
+.b3 { top: 38%; left: 18%; width: 18rem; height: 18rem; background: var(--blue); opacity: .23; animation: drift-blue 27s ease-in-out infinite; }
+
+@keyframes drift-purple {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(5rem, 6rem, 0) scale(1.2); }
+}
+@keyframes drift-pink {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-5rem, -4rem, 0) scale(1.15); }
+}
+@keyframes drift-blue {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(4rem, -4rem, 0) scale(1.25); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
